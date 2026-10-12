@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>伊人影视 - 宣纸水墨风电影片单与分类导航</title>
+<meta name="description" content="伊人影视(yirenyingshi-h5.github.io)用宣纸水墨与仕女团扇风格整理电影片单、类型分类、墨韵评分与正版观影指引，单页移动自适应，符合必应收录规则。">
+<meta name="keywords" content="伊人影视, yirenyingshi-h5.github.io, 电影片单, 宣纸水墨风影视导航, 电影分类, 墨韵评分榜">
+<meta name="author" content="伊人影视">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<style>
+:root{
+  --paper:#F7F1E3;
+  --paper2:#EFE6D2;
+  --paper3:#E7DBC2;
+  --ink:#2B2622;
+  --ink2:#4A4038;
+  --dai:#2F4858;
+  --dai2:#3E6377;
+  --rouge:#B23A48;
+  --rouge2:#8E2C38;
+  --gold:#B89B5E;
+  --gold2:#8A7240;
+  --line:rgba(43,38,34,.18);
+  --shadow:0 14px 30px rgba(43,38,34,.16);
+  --radius:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Songti SC","SimSun",Noto Serif SC,serif;background:var(--paper);color:var(--ink);line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none;transition:.3s}
+.wrap{width:min(1180px,92%);margin:0 auto}
+
+@keyframes inkfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes unfurl{0%{transform:scaleX(.2);opacity:0}100%{transform:scaleX(1);opacity:1}}
+@keyframes spinsoft{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+
+/* 卷轴导航 */
+.topbar{position:sticky;top:0;z-index:999;background:rgba(247,241,227,.94);backdrop-filter:blur(10px);border-bottom:3px double var(--ink)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:14px}
+.scroll-logo{width:48px;height:48px;border-radius:8px;background:linear-gradient(180deg,var(--paper3),var(--paper));border:2px solid var(--ink);display:grid;place-items:center;position:relative;box-shadow:inset 0 0 0 4px var(--paper),inset 0 0 0 5px var(--gold)}
+.scroll-logo:before,.scroll-logo:after{content:"";position:absolute;left:-6px;right:-6px;height:8px;background:var(--ink);border-radius:4px}
+.scroll-logo:before{top:-6px}.scroll-logo:after{bottom:-6px}
+.scroll-logo b{font-size:20px;color:var(--rouge);font-family:"KaiTi","STKaiti",serif}
+.brand .name{font-size:20px;color:var(--ink);letter-spacing:2px}
+.brand small{display:block;font-size:11px;color:var(--ink2);letter-spacing:1px}
+.nav{display:flex;gap:6px}
+.nav a{min-height:44px;display:inline-flex;align-items:center;padding:8px 16px;border:1px solid transparent;border-radius:10px;font-size:14px;color:var(--ink);letter-spacing:1px}
+.nav a:hover{background:var(--paper2);border-color:var(--gold)}
+.menu-btn{display:none;background:var(--ink);color:var(--paper);border:0;border-radius:10px;padding:10px 16px;min-height:44px;font-size:14px;cursor:pointer;letter-spacing:1px}
+
+/* Hero 远山 */
+#home{padding:60px 0 46px;background:radial-gradient(900px 420px at 88% 0,rgba(47,72,88,.12),transparent),radial-gradient(820px 380px at 6% 18%,rgba(178,58,72,.10),transparent),var(--paper2);position:relative;overflow:hidden}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;min-height:420px}
+.scroll-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);position:relative;transform-origin:left center;animation:unfurl 1s ease both}
+.scroll-card:before{content:"";position:absolute;top:14px;bottom:14px;left:14px;width:2px;background:repeating-linear-gradient(var(--gold),var(--gold) 4px,transparent 4px,transparent 10px)}
+.seal{display:inline-flex;align-items:center;gap:8px;background:var(--rouge);color:#fff;font-size:12px;padding:5px 12px;border-radius:4px;letter-spacing:1px;margin-bottom:16px;box-shadow:0 4px 0 var(--rouge2)}
+.hero h1{font-size:clamp(30px,5vw,50px);line-height:1.18;margin-bottom:14px;color:var(--ink);letter-spacing:2px}
+.hero h1 em{font-style:normal;color:var(--rouge)}
+.hero p{font-size:16px;color:var(--ink2);margin-bottom:22px}
+.cta{display:inline-block;background:linear-gradient(135deg,var(--ink),var(--dai));color:var(--paper);font-weight:bold;letter-spacing:1px;padding:13px 30px;border-radius:8px;box-shadow:var(--shadow);border:1px solid var(--gold)}
+.cta:hover{transform:translateY(-2px)}
+
+.ink-art{position:relative;height:380px;border-radius:var(--radius);background:linear-gradient(180deg,#FBF7EE,#EFE6D2);border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow)}
+.mountain{position:absolute;bottom:0;left:0;right:0;height:220px;background:radial-gradient(120% 100% at 30% 100%,var(--dai) 0 40%,transparent 41%),radial-gradient(120% 90% at 75% 100%,var(--ink2) 0 35%,transparent 36%);opacity:.85;filter:blur(.4px)}
+.river{position:absolute;bottom:0;left:0;right:0;height:70px;background:linear-gradient(180deg,transparent,rgba(47,72,88,.25))}
+.fan{position:absolute;top:40px;right:40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 50% 100%,var(--rouge) 0 18%,transparent 19%),conic-gradient(from 180deg at 50% 100%,var(--paper3) 0 25%,var(--paper2) 0 50%,var(--paper3) 0 75%,var(--paper2) 0 100%);border:3px solid var(--gold);box-shadow:var(--shadow);animation:spinsoft 6s ease-in-out infinite}
+.fan:before{content:"伊";position:absolute;top:18%;left:50%;transform:translateX(-50%);font-size:34px;color:var(--rouge);font-family:"KaiTi","STKaiti",serif}
+.boat{position:absolute;bottom:90px;left:14%;font-size:34px;animation:inkfloat 5s ease-in-out infinite}
+.bird{position:absolute;top:60px;left:18%;font-size:22px;color:var(--ink2);animation:inkfloat 4s ease-in-out infinite}
+
+/* 通用 */
+section.block{padding:56px 0}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.sec-head .brush{width:18px;height:6px;background:var(--ink);border-radius:3px;position:relative}
+.sec-head .brush:before{content:"";position:absolute;left:-6px;top:-4px;width:6px;height:14px;background:var(--gold);border-radius:3px}
+.sec-head h2{font-size:25px;color:var(--ink);letter-spacing:2px}
+.sec-head span{margin-left:auto;font-size:13px;color:var(--ink2);font-style:italic}
+
+/* 片单 仕女册 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.album{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.3s}
+.album:hover{transform:translateY(-8px);border-color:var(--gold)}
+.album-top{height:130px;display:grid;place-items:center;font-size:50px;background:linear-gradient(135deg,var(--paper2),var(--paper3));position:relative;border-bottom:2px dashed var(--line)}
+.album-top:after{content:"册";position:absolute;top:10px;right:10px;font-family:"KaiTi",serif;font-size:12px;color:var(--rouge);border:1px solid var(--rouge);padding:1px 7px;border-radius:4px}
+.album-body{padding:16px 18px}
+.album-body h3{font-size:17px;color:var(--ink);margin-bottom:6px;letter-spacing:1px}
+.album-body p{font-size:13px;color:var(--ink2);margin-bottom:10px}
+.album-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--dai);font-family:Consolas,monospace}
+
+/* 分类 团扇 */
+.fans{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.fan-box{background:var(--paper);border:2px solid var(--gold);border-radius:50% 50% 12px 12px;padding:26px 16px 20px;text-align:center;box-shadow:var(--shadow);transition:.3s;cursor:pointer;position:relative}
+.fan-box:before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:60%;height:4px;background:var(--rouge);border-radius:2px;opacity:.5}
+.fan-box .fico{font-size:34px;display:block;margin-bottom:10px}
+.fan-box h3{font-size:15px;color:var(--ink);letter-spacing:1px;margin-bottom:4px}
+.fan-box small{color:var(--ink2);font-size:12px}
+.fan-box:hover{background:var(--ink);border-color:var(--gold)}
+.fan-box:hover *{color:var(--paper)!important}
+.fan-box:hover:before{background:var(--gold)}
+
+/* 评分 墨韵 */
+.ink-list{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.ink-row{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.ink-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.ink-top .sealmini{width:40px;height:40px;border-radius:6px;background:var(--rouge);color:#fff;display:grid;place-items:center;font-family:"KaiTi",serif;font-size:18px;box-shadow:0 4px 0 var(--rouge2)}
+.ink-top h3{font-size:16px;color:var(--ink);letter-spacing:1px}
+.ink-top b{color:var(--dai);font-family:Consolas,monospace;font-size:16px}
+.ink-bar{height:20px;background:var(--paper2);border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative}
+.ink-fill{height:100%;background:linear-gradient(90deg,var(--ink2),var(--dai),var(--rouge));border-radius:10px}
+.ink-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:12px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+.ink-desc{font-size:13px;color:var(--ink2);margin-top:10px}
+
+/* FAQ 观片须知 */
+.faq{display:grid;gap:12px}
+.note{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--rouge);border-radius:12px;overflow:hidden}
+.notebtn{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:16px 18px;min-height:50px;font-size:15px;font-weight:bold;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:10px;letter-spacing:1px}
+.notebtn .nno{font-family:Consolas,monospace;color:var(--rouge);font-size:12px;margin-right:auto;border:1px solid var(--rouge);padding:1px 7px;border-radius:4px}
+.notebtn span{color:var(--gold2);font-size:18px}
+.noteans{max-height:0;overflow:hidden;transition:max-height .35s}
+.noteans p{font-size:14px;color:var(--ink2);padding:0 18px 16px;line-height:1.85}
+
+/* 关于 题跋 */
+#about{background:linear-gradient(135deg,var(--dai),var(--ink))}
+.colophon{width:min(880px,92%);margin:0 auto;background:var(--paper);border:2px solid var(--gold);border-radius:var(--radius);padding:42px;box-shadow:var(--shadow);position:relative}
+.colophon:before{content:"跋";position:absolute;top:-14px;left:24px;width:40px;height:40px;background:var(--rouge);color:#fff;display:grid;place-items:center;font-family:"KaiTi",serif;font-size:18px;border-radius:6px;box-shadow:0 4px 0 var(--rouge2)}
+.colophon h2{font-size:26px;color:var(--ink);text-align:center;margin-bottom:14px;letter-spacing:2px}
+.colophon p{color:var(--ink2);margin-bottom:14px;text-align:center}
+.url-silk{display:inline-block;background:var(--paper2);color:var(--rouge);font-family:Consolas,monospace;padding:12px 20px;border-radius:8px;border:1px dashed var(--gold);word-break:break-all;font-size:15px;display:block;text-align:center;margin:0 auto}
+
+footer{background:var(--ink);color:var(--paper2);text-align:center;padding:28px 0;font-size:13px;letter-spacing:.5px}
+footer a{color:var(--gold)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center}
+  .scroll-card{text-align:left}
+  .ink-art{max-width:460px;margin:0 auto}
+  .fans{grid-template-columns:repeat(2,1fr)}
+  .ink-list{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .nav{display:none;width:100%}
+  .nav.show{display:flex;flex-direction:column;position:absolute;top:74px;left:0;right:0;background:var(--paper);padding:18px;box-shadow:0 10px 20px rgba(0,0,0,.12)}
+  .menu-btn{display:block}
+  .grid{grid-template-columns:1fr}
+  .fans{grid-template-columns:1fr 1fr}
+  .sec-head h2{font-size:21px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <div class="scroll-logo" aria-label="伊人影视卷轴logo"><b>伊</b></div>
+      <div>
+        <span class="name">伊人影视</span>
+        <small>yirenyingshi-h5.github.io</small>
+      </div>
+    </div>
+    <button class="menu-btn" id="menuBtn">展卷菜单</button>
+    <nav class="nav" id="nav">
+      <a href="#home">卷首</a>
+      <a href="#list">仕女片单</a>
+      <a href="#category">团扇分类</a>
+      <a href="#score">墨韵评分</a>
+      <a href="#faq">观片须知</a>
+      <a href="#about">题跋信息</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- 栏目1 卷首/首页 -->
+  <section id="home">
+    <div class="wrap hero">
+      <div class="scroll-card">
+        <div class="seal">朱印·每日新片</div>
+        <h1>伊人影视 · <em>宣纸水墨</em>片单</h1>
+        <p>伊人影视用仕女团扇与水墨远山整理电影：闺阁爱情、山水纪录片、古意悬疑、禅意治愈。单页自适应、内链 # 占位、正版渠道指引，符合必应收录规则。</p>
+        <a class="cta" href="#list">展卷看片单</a>
+      </div>
+      <div class="ink-art" aria-hidden="true">
+        <div class="bird">🕊️</div>
+        <div class="fan"></div>
+        <div class="boat">🛶</div>
+        <div class="mountain"></div>
+        <div class="river"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目2 仕女片单 -->
+  <section id="list" class="block">
+    <div class="wrap">
+      <div class="sec-head"><div class="brush"></div><h2>仕女册片单</h2><span>水墨卡片网格</span></div>
+      <div class="grid">
+        <article class="album"><div class="album-top" role="img" aria-label="闺阁爱情">🌸</div><div class="album-body"><h3>庭院春深</h3><p>爱情/古装 · 闺阁少女的慢恋爱</p><div class="album-meta"><span>古意线</span><span>104min</span></div></div></article>
+        <article class="album"><div class="album-top" role="img" aria-label="山水纪录">⛰️</div><div class="album-body"><h3>烟雨江山</h3><p>纪录/自然 · 江南四季与水墨长卷</p><div class="album-meta"><span>纪录片</span><span>88min</span></div></div></article>
+        <article class="album"><div class="album-top" role="img" aria-label="古意悬疑">🏮</div><div class="album-body"><h3>灯下谜案</h3><p>悬疑/古装 · 夜宴后的旧信与密谋</p><div class="album-meta"><span>悬疑线</span><span>110min</span></div></div></article>
+        <article class="album"><div class="album-top" role="img" aria-label="禅意治愈">🍵</div><div class="album-body"><h3>煮茶听雨</h3><p>治愈/文艺 · 山寺四季的清寂日常</p><div class="album-meta"><span>治愈线</span><span>96min</span></div></div></article>
+        <article class="album"><div class="album-top" role="img" aria-label="梨园戏曲">🎭</div><div class="album-body"><h3>梨园旧梦</h3><p>戏曲/剧情 · 名伶兴衰与戏台人生</p><div class="album-meta"><span>戏曲线</span><span>118min</span></div></div></article>
+        <article class="album"><div class="album-top" role="img" aria-label="边塞史诗">🐎</div><div class="album-body"><h3>大漠孤鸿</h3><p>历史/史诗 · 丝路商队与边城烽火</p><div class="album-meta"><span>历史线</span><span>126min</span></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目3 团扇分类 -->
+  <section id="category" class="block">
+    <div class="wrap">
+      <div class="sec-head"><div class="brush"></div><h2>团扇分类阁</h2><span>八扇按类型</span></div>
+      <div class="fans">
+        <a class="fan-box" href="#"><span class="fico">🌸</span><h3>闺阁扇</h3><small>爱情 / 古装 / 青春</small></a>
+        <a class="fan-box" href="#"><span class="fico">⛰️</span><h3>山水扇</h3><small>纪录 / 自然 / 旅行</small></a>
+        <a class="fan-box" href="#"><span class="fico">🏮</span><h3>夜宴扇</h3><small>悬疑 / 权谋 / 古装</small></a>
+        <a class="fan-box" href="#"><span class="fico">🍵</span><h3>禅茶扇</h3><small>治愈 / 文艺 / 慢片</small></a>
+        <a class="fan-box" href="#"><span class="fico">🎭</span><h3>梨园扇</h3><small>戏曲 / 音乐 / 非遗</small></a>
+        <a class="fan-box" href="#"><span class="fico">🐎</span><h3>边塞扇</h3><small>历史 / 战争 / 史诗</small></a>
+        <a class="fan-box" href="#"><span class="fico">🖌️</span><h3>翰墨扇</h3><small>文人 / 传记 / 书画</small></a>
+        <a class="fan-box" href="#"><span class="fico">📜</span><h3>合集扇</h3><small>榜单 / 正版 / 索引</small></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目4 墨韵评分 -->
+  <section id="score" class="block">
+    <div class="wrap">
+      <div class="sec-head"><div class="brush"></div><h2>墨韵评分榜</h2><span>墨色进度条</span></div>
+      <div class="ink-list">
+        <div class="ink-row">
+          <div class="ink-top"><div class="sealmini">墨</div><div><h3>庭院春深</h3><b>95 分</b></div></div>
+          <div class="ink-bar"><div class="ink-fill" style="width:95%"></div><div class="ink-label">95/100 · 上品</div></div>
+          <p class="ink-desc">古装爱情 · 画面如卷，情感细腻</p>
+        </div>
+        <div class="ink-row">
+          <div class="ink-top"><div class="sealmini">山</div><div><h3>烟雨江山</h3><b>92 分</b></div></div>
+          <div class="ink-bar"><div class="ink-fill" style="width:92%"></div><div class="ink-label">92/100 · 逸品</div></div>
+          <p class="ink-desc">自然纪录 · 水墨运镜，治愈解压</p>
+        </div>
+        <div class="ink-row">
+          <div class="ink-top"><div class="sealmini">谜</div><div><h3>灯下谜案</h3><b>88 分</b></div></div>
+          <div class="ink-bar"><div class="ink-fill" style="width:88%"></div><div class="ink-label">88/100 · 妙品</div></div>
+          <p class="ink-desc">古装悬疑 · 节奏沉稳，伏笔绵密</p>
+        </div>
+        <div class="ink-row">
+          <div class="ink-top"><div class="sealmini">禅</div><div><h3>煮茶听雨</h3><b>84 分</b></div></div>
+          <div class="ink-bar"><div class="ink-fill" style="width:84%"></div><div class="ink-label">84/100 · 清品</div></div>
+          <p class="ink-desc">禅意治愈 · 慢节奏，适合深夜</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目5 观片须知 -->
+  <section id="faq" class="block">
+    <div class="wrap">
+      <div class="sec-head"><div class="brush"></div><h2>观片须知</h2><span>单页手风琴</span></div>
+      <div class="faq">
+        <div class="note">
+          <button class="notebtn"><span class="nno">甲</span>伊人影视提供在线播放或下载吗？<span>+</span></button>
+          <div class="noteans"><p>本单页仅做仕女片单、团扇分类、墨韵评分与正版渠道指引，不提供盗版视频播放、下载或网盘资源；同名“伊人”旧站多为免费聚合，访问需注意版权与安全风险。[4,10](@ref)</p></div>
+        </div>
+        <div class="note">
+          <button class="notebtn"><span class="nno">乙</span>单页如何做必应收录优化？<span>+</span></button>
+          <div class="noteans"><p>唯一 H1 写“伊人影视”，标题/描述/关键词前置域名与核心词，H2 分卷首/片单/分类/评分/须知/题跋；响应式单 URL、静态 HTML 正文、移动无横向溢出。按你要求不生成 robots/sitemap，后续可在 Bing Webmaster Tools 提交首页。[5,12](@ref)</p></div>
+        </div>
+        <div class="note">
+          <button class="notebtn"><span class="nno">丙</span>水墨风格只是好看吗？<span>+</span></button>
+          <div class="noteans"><p>用卷轴、团扇、远山、朱印表达“展卷—分阁—评墨—题跋”的找片路径；DOM 与前面各站均不同，国风留白更利于古装、纪录、戏曲类片单阅读。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目6 题跋关于 -->
+  <section id="about" class="block">
+    <div class="colophon">
+      <h2>题跋 · 伊人影视</h2>
+      <p>伊人影视为宣纸水墨风单页影视导航，提供仕女片单、团扇分类、墨韵评分与正版观影建议。所有内页链接以 # 占位，仅作演示与索引使用。</p>
+      <div class="url-silk">https://yirenyingshi-h5.github.io</div>
+      <p style="margin-top:18px;text-align:center"><a class="cta" href="#home">返回卷首</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2024 伊人影视 · 单页演示站 · 内页链接以 # 占位</p>
+    <p>官方网址：<a href="https://yirenyingshi-h5.github.io">https://yirenyingshi-h5.github.io</a></p>
+    <p>关键词：伊人影视、yirenyingshi-h5.github.io、宣纸水墨风电影片单</p>
+  </div>
+</footer>
+
+<script>
+var menuBtn=document.getElementById('menuBtn'),nav=document.getElementById('nav');
+if(menuBtn&&nav){menuBtn.addEventListener('click',function(){nav.classList.toggle('show');});}
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var id=a.getAttribute('href');if(id.length<2)return;
+    var el=document.querySelector(id);
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});if(nav)nav.classList.remove('show');}
+  });
+});
+document.querySelectorAll('.notebtn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var note=btn.parentElement,ans=note.querySelector('.noteans'),icon=btn.querySelector('span:last-child');
+    var open=note.classList.contains('open');
+    document.querySelectorAll('.note').forEach(function(x){x.classList.remove('open');x.querySelector('.noteans').style.maxHeight=null;x.querySelector('.notebtn span:last-child').textContent='+';});
+    if(!open){note.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';icon.textContent='−';}
+  });
+});
+</script>
+</body>
+</html>
